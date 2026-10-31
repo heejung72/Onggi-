@@ -1,6 +1,9 @@
 build/
 dist/
 *.xcodeproj/
+*.xcworkspace/
 DerivedData/
 .DS_Store
 xcuserdata/
+.idea/
+Onggi-/
