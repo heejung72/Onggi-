@@ -1,0 +1,39 @@
+# XcodeGen 설정 파일 — `xcodegen generate` 를 실행하면 Onggi.xcodeproj 가 만들어집니다.
+name: Onggi
+options:
+  bundleIdPrefix: com.onggi
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+
+packages:
+  Supabase:
+    url: https://github.com/supabase/supabase-swift
+    from: 2.0.0
+
+targets:
+  Onggi:
+    type: application
+    platform: macOS
+    sources:
+      - Onggi
+    dependencies:
+      - package: Supabase
+        product: Supabase
+    settings:
+      base:
+        PRODUCT_NAME: Onggi
+        PRODUCT_BUNDLE_IDENTIFIER: com.onggi.prototype
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        SWIFT_VERSION: "5.9"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_LSUIElement: YES            # 독(Dock)에 아이콘 없이 메뉴바에서만 동작
+        INFOPLIST_KEY_CFBundleDisplayName: "옹기종기"
+        INFOPLIST_KEY_NSHumanReadableCopyright: ""
+        # 0단계: 개발자 계정 없이 친구에게 나눠주기 위해 '로컬 실행용 서명' 사용
+        CODE_SIGN_STYLE: Manual
+        CODE_SIGN_IDENTITY: "-"
+        DEVELOPMENT_TEAM: ""
+        ENABLE_HARDENED_RUNTIME: NO
+        ENABLE_APP_SANDBOX: NO                    # 앱스토어 출시 단계에서 켜고 네트워크 권한 추가
