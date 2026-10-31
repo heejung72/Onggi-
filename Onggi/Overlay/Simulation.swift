@@ -135,7 +135,7 @@ final class Simulation: ObservableObject {
         return CGPoint(x: bounds.minX + bounds.width * fraction, y: bounds.maxY - 70)
     }
 
-    static func seatSpacing(_ activity: Activity) -> CGFloat {
+    nonisolated static func seatSpacing(_ activity: Activity) -> CGFloat {
         activity == .sleep ? 58 : 74
     }
 
